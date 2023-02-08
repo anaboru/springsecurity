@@ -28,6 +28,6 @@ public class UserController {
         User user = userService.findByUsername(principal.getName());
         model.addAttribute("user", userService.findById(user.getId()
         ));
-        return "user/user";
+        return "user/profile";
     }
 }

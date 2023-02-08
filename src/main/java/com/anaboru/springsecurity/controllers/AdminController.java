@@ -1,7 +1,6 @@
 package com.anaboru.springsecurity.controllers;
 
 import com.anaboru.springsecurity.models.User;
-import com.anaboru.springsecurity.repositories.UserRepository;
 import com.anaboru.springsecurity.services.RoleService;
 import com.anaboru.springsecurity.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,10 +37,10 @@ public class AdminController {
     public String specificUserPage(Model model, @PathVariable("id") Long id) {
         model.addAttribute("user", userService.findById(id));
 
-        return "admin/user";
+        return "admin/profile";
     }
 
-    @GetMapping("/admin/newuser")
+    @GetMapping("/admin/new")
     public String userCreationPage(Model model) {
         model.addAttribute("user", new User());
         model.addAttribute("roles", roleService.getRoles());
@@ -49,7 +48,7 @@ public class AdminController {
         return "admin/new";
     }
 
-    @PostMapping("admin/newuser")
+    @PostMapping("admin/new")
     public String userCreation(@ModelAttribute("user") User user) {
         userService.save(user);
 
