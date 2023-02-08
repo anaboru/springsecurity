@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+  <title>profile</title>
+  <style>table th, table td {padding: 6px;}</style>
+</head>
+<body>
+<table border="2">
+  <tr>
+    <th scope="col">ID</th>
+    <th scope="col">USERNAME</th>
+    <th scope="col">PASSWORD</th>
+    <th scope="col">FIRSTNAME</th>
+    <th scope="col">LASTNAME</th>
+  </tr>
+  <tbody>
+  <tr th:each="user : ${user}">
+    <td th:text="${user.getId()}"></td>
+    <td th:text="${user.getUsername()}"></td>
+    <td th:text="${user.getPassword()}"></td>
+    <td th:text="${user.getFirstName()}"></td>
+    <td th:text="${user.getLastName()}"></td>
+  </tr>
+  </tbody>
+</table>
+<button type="button">
+  <a href="/logout">Logout</a>
+</button>
+
+</body>
+</html>

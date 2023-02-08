@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>USERS</title>
+  <style>table th, table td {padding: 6px;}</style>
+</head>
+<body>
+<table border="2">
+  <tr>
+    <th scope="col">ID</th>
+    <th scope="col">USERNAME</th>
+    <th scope="col">PASSWORD</th>
+    <th scope="col">FIRSTNAME</th>
+    <th scope="col">LASTNAME</th>
+    <th scope="col">EDIT</th>
+    <th scope="col">DELETE</th>
+  </tr>
+  <tbody>
+  <tr th:each="user : ${users}">
+    <td th:text="${user.getId()}"></td>
+    <td th:text="${user.getUsername()}"></td>
+    <td th:text="${user.getPassword()}"></td>
+    <td th:text="${user.getFirstName()}"></td>
+    <td th:text="${user.getLastName()}"></td>
+    <td>
+      <a th:href="@{/admin/{id}/edit(id=${user.getId()})}"><input type="button" value="Edit"></a>
+    </td>
+    <td>
+      <form th:method="DELETE" th:action="@{/admin/{id}(id=${user.getId()})}">
+      <input type="submit" value="Delete">
+      </form>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<br/>
+<button type="button">
+  <a href="newuser/">Create new user</a>
+</button>
+<button type="button">
+  <a href="/logout">Logout</a>
+</button>
+<hr/>
+</body>
+</html>
+
